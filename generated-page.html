@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mindful Dating</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .playfair { font-family: 'Playfair Display', serif; }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Inter&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-white to-indigo-50 min-h-screen flex flex-col justify-center">
+
+  <!-- Opening Screen -->
+  <div id="opening" class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-pink-100 via-white to-indigo-100">
+    <div class="mb-8">
+      <img src="https://img.icons8.com/color/144/000000/heart-with-arrow.png" alt="Logo" class="w-28 h-28 drop-shadow-lg opacity-90">
+    </div>
+    <h1 class="playfair text-4xl md:text-5xl text-gray-800 font-bold mb-3 tracking-tight drop-shadow">Mindful Dating</h1>
+    <p class="text-lg md:text-xl text-gray-500 mb-10 text-center max-w-xl">A dating experience designed for meaningful connections and real conversations. <span class="text-pink-400 font-semibold">Find your vibe, not just a profile.</span></p>
+    <button onclick="showLogin()" class="bg-white text-pink-500 font-bold px-10 py-3 rounded-full shadow-lg hover:bg-pink-500 hover:text-white transition text-lg ring-2 ring-pink-200">Get Started</button>
+    <div class="mt-16 opacity-70">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=facearea&w=400&q=80&facepad=2" class="rounded-3xl w-64 h-32 object-cover object-center shadow-xl" alt="Couple">
+    </div>
+  </div>
+
+  <!-- Session Check -->
+  <div id="session-check" class="hidden flex flex-col items-center justify-center min-h-screen bg-white">
+    <div class="w-20 h-20 mb-6">
+      <img src="https://img.icons8.com/fluency/96/lock-2.png" alt="Session Check">
+    </div>
+    <h2 class="text-2xl playfair text-pink-500 mb-2 font-bold">Checking your session...</h2>
+    <p class="text-gray-500 text-center mb-4">Please wait while we verify your status.</p>
+    <div class="w-16 h-16 border-4 border-pink-200 border-l-pink-400 rounded-full animate-spin mx-auto mb-2"></div>
+  </div>
+
+  <!-- Onboarding Step 1 -->
+  <form id="onboarding-1" class="hidden flex flex-col items-center justify-center min-h-screen px-6 bg-gradient-to-br from-white via-pink-50 to-indigo-50">
+    <div class="bg-white rounded-3xl shadow-2xl px-8 py-10 w-full max-w-md">
+      <h2 class="playfair text-2xl text-gray-800 font-bold mb-2">Your Details</h2>
+      <p class="mb-6 text-gray-500">Let’s start with the basics!</p>
+      <div class="space-y-4">
+        <input required type="text" placeholder="First Name *" class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+        <input type="text" placeholder="Middle Name" class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+        <input required type="text" placeholder="Last Name *" class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+        <select required class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+          <option value="">Gender</option>
+          <option>Female</option>
+          <option>Male</option>
+          <option>Non-binary</option>
+          <option>Prefer not to say</option>
+        </select>
+        <input required type="date" placeholder="Date of Birth *" class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+      </div>
+      <button type="button" id="btn-onboarding-1" class="mt-8 w-full bg-pink-500 text-white font-semibold px-10 py-3 rounded-full shadow-xl hover:bg-pink-600 transition text-lg">Let's Begin</button>
+      <div class="mt-6">
+        <div class="h-2 bg-pink-100 rounded-full">
+          <div class="h-2 bg-pink-400 rounded-full w-1/12"></div>
+        </div>
+        <div class="text-xs text-right text-gray-400 mt-1">Step 1 of 12</div>
+      </div>
+    </div>
+  </form>
+
+  <!-- Onboarding Step 2 -->
+  <form id="onboarding-2" class="hidden flex flex-col items-center justify-center min-h-screen px-6 bg-gradient-to-br from-white via-pink-50 to-indigo-50">
+    <div class="bg-white rounded-3xl shadow-2xl px-8 py-10 w-full max-w-md">
+      <h2 class="playfair text-2xl text-gray-800 font-bold mb-2">Let’s Find Your Vibe</h2>
+      <p class="mb-6 text-gray-500">1 of 10: How do you recharge?</p>
+      <select class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20 mb-4">
+        <option value="">Select your answer</option>
+        <option>With friends</option>
+        <option>Alone time</option>
+        <option>Outdoors</option>
+        <option>Hobbies</option>
+      </select>
+      <button type="button" id="btn-onboarding-2" class="mt-4 w-full bg-pink-500 text-white font-semibold px-10 py-3 rounded-full shadow-xl hover:bg-pink-600 transition text-lg">Next</button>
+      <div class="mt-6">
+        <div class="h-2 bg-pink-100 rounded-full">
+          <div class="h-2 bg-pink-400 rounded-full w-2/12"></div>
+        </div>
+        <div class="text-xs text-right text-gray-400 mt-1">Step 2 of 12</div>
+      </div>
+    </div>
+  </form>
+
+  <!-- Onboarding Step 12 -->
+  <form id="onboarding-12" class="hidden flex flex-col items-center justify-center min-h-screen px-6 bg-gradient-to-br from-white via-pink-50 to-indigo-50">
+    <div class="bg-white rounded-3xl shadow-2xl px-8 py-10 w-full max-w-md">
+      <h2 class="playfair text-2xl text-gray-800 font-bold mb-2">Preferences</h2>
+      <p class="mb-6 text-gray-500">Who are you looking for?</p>
+      <div class="space-y-4">
+        <select class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+          <option value="">Religion</option>
+          <option>None</option>
+          <option>Christianity</option>
+          <option>Islam</option>
+          <option>Hinduism</option>
+          <option>Other</option>
+        </select>
+        <select class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+          <option value="">Ethnicity</option>
+          <option>Asian</option>
+          <option>Black</option>
+          <option>White</option>
+          <option>Latino</option>
+          <option>Other</option>
+        </select>
+        <select class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+          <option value="">Sexuality</option>
+          <option>Straight</option>
+          <option>Gay</option>
+          <option>Bisexual</option>
+          <option>Other</option>
+        </select>
+        <input type="text" placeholder="Age Group e.g. 25-35" class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+        <input type="text" placeholder="Preferred Height" class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+      </div>
+      <button type="button" id="btn-onboarding-12" class="mt-8 w-full bg-pink-500 text-white font-semibold px-10 py-3 rounded-full shadow-xl hover:bg-pink-600 transition text-lg">Next</button>
+      <div class="mt-6">
+        <div class="h-2 bg-pink-100 rounded-full">
+          <div class="h-2 bg-pink-400 rounded-full w-12/12"></div>
+        </div>
+        <div class="text-xs text-right text-gray-400 mt-1">Step 12 of 12</div>
+      </div>
+    </div>
+  </form>
+
+  <!-- Onboarding Step 13 (Verify) -->
+  <form id="onboarding-13" class="hidden flex flex-col items-center justify-center min-h-screen px-6 bg-gradient-to-br from-white via-pink-50 to-indigo-50">
+    <div class="bg-white rounded-3xl shadow-2xl px-8 py-10 w-full max-w-md">
+      <h2 class="playfair text-2xl text-gray-800 font-bold mb-2">Verify Account</h2>
+      <div class="space-y-4">
+        <div class="flex space-x-2">
+          <select class="w-24 px-2 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+            <option>🇺🇸 +1</option>
+            <option>🇬🇧 +44</option>
+            <option>🇮🇳 +91</option>
+          </select>
+          <input type="text" placeholder="Phone Number" class="flex-1 px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+        </div>
+        <input type="email" placeholder="Email Address" class="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 bg-pink-50/20">
+      </div>
+      <button type="button" id="btn-onboarding-13" class="mt-8 w-full bg-pink-500 text-white font-semibold px-10 py-3 rounded-full shadow-xl hover:bg-pink-600 transition text-lg">Login</button>
+    </div>
+  </form>
+
+  <!-- OTP -->
+  <form id="otp-validate" class="hidden flex flex-col items-center justify-center min-h-screen px-6 bg-gradient-to-br from-white via-pink-50 to-indigo-50">
+    <div class="bg-white rounded-3xl shadow-2xl px-8 py-10 w-full max-w-md">
+      <h2 class="playfair text-2xl text-gray-800 font-bold mb-4">Enter OTP</h2>
+      <input type="text" maxlength="6" placeholder="6-digit OTP" class="w-full max-w-xs px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-200 text-center text-xl mb-4 bg-pink-50/20">
+      <button type="button" id="btn-otp-validate" class="w-full bg-pink-500 text-white font-semibold px-10 py-3 rounded-full shadow-xl hover:bg-pink-600 transition text-lg">Verify</button>
+      <p class="mt-4 text-gray-400 text-sm"><span id="resend-timer">Resend OTP in 60s</span></p>
+      <button class="mt-2 text-pink-500 underline hidden" id="resend-btn">Resend OTP</button>
+    </div>
+  </form>
+
+  <!-- Matching Panel -->
+  <div id="matching-panel" class="hidden flex flex-col min-h-screen bg-gradient-to-br from-white via-pink-50 to-indigo-50">
+    <!-- Header -->
+    <div class="flex items-center justify-between px-6 py-5 bg-white shadow-lg">
+      <div class="flex items-center space-x-2">
+        <button onclick="showMenu()" class="p-2 rounded-full hover:bg-pink-50">
+          <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+        <span class="playfair text-2xl text-pink-500 font-bold ml-1 tracking-tight">Mindful Dating</span>
+      </div>
+      <button onclick="showProfile()" class="p-1 rounded-full ring-2 ring-pink-100">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-11 h-11 rounded-full object-cover" alt="Profile">
+      </button>
+    </div>
+    <!-- Card Area -->
+    <div class="flex-1 flex flex-col items-center justify-center px-4 py-8">
+      <div class="relative flex flex-col items-center">
+        <div class="absolute -top-16 left-1/2 -translate-x-1/2 z-10">
+          <img src="https://img.icons8.com/fluency/64/like--v1.png" class="w-16 h-16 drop-shadow-xl" alt="Like">
+        </div>
+        <div class="bg-white rounded-3xl shadow-2xl px-7 py-6 w-[360px] max-w-full flex flex-col items-center relative">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-40 h-40 rounded-2xl object-cover border-4 border-pink-100 mb-4 shadow-xl" alt="Potential Match">
+          <h3 class="playfair text-2xl font-bold text-gray-800 mb-1">Sophia L.</h3>
+          <div class="flex items-center mb-2">
+            <span class="text-gray-500 text-lg">29</span>
+            <span class="mx-2 text-pink-400">•</span>
+            <span class="text-gray-500 text-lg">Yoga Enthusiast</span>
+            <span class="mx-2 text-pink-400">•</span>
+            <span class="text-gray-500 text-lg">San Francisco</span>
+          </div>
+          <!-- Prompts -->
+          <div class="w-full mt-4 space-y-2">
+            <div class="bg-pink-50 rounded-xl px-4 py-2 flex items-center shadow-sm">
+              <span class="font-semibold text-pink-400 mr-2">Prompt:</span>
+              <span class="text-gray-700">“My ideal weekend involves...”</span>
+            </div>
+            <div class="bg-indigo-50 rounded-xl px-4 py-2 flex items-center shadow-sm">
+              <span class="font-semibold text-indigo-400 mr-2">Answer:</span>
+              <span class="text-gray-700">“Sunrise hikes, farmer's market, and a cozy movie night!”</span>
+            </div>
+          </div>
+          <div class="flex items-center mt-6 mb-2">
+            <span class="text-pink-500 font-semibold text-md">Compatibility Score:</span>
+            <span class="bg-pink-100 text-pink-700 font-bold px-3 py-1 rounded-full text-md ml-2 shadow">87%</span>
+          </div>
+          <div class="flex justify-between w-full mt-4 space-x-3">
+            <button class="flex-1 bg-gray-100 text-gray-400 rounded-full px-0 py-3 font-semibold hover:bg-gray-200 hover:text-gray-500 transition shadow">Pass</button>
+            <button class="flex-1 bg-pink-500 text-white rounded-full px-0 py-3 font-semibold shadow-lg hover:bg-pink-600 transition">Connect</button>
+          </div>
+        </div>
+        <!-- Card shadow effect -->
+        <div class="absolute z-0 w-[375px] h-[440px] bg-gradient-to-tr from-pink-100 via-white to-indigo-100 rounded-3xl blur-2xl top-2 left-1/2 -translate-x-1/2"></div>
+      </div>
+    </div>
+    <!-- Bottom Nav -->
+    <div class="flex items-center justify-between px-12 py-4 bg-white shadow-inner">
+      <button class="flex flex-col items-center text-pink-500">
+        <svg class="w-7 h-7 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m0 0h4m-4 0a2 2 0 004 0"></path></svg>
+        <span class="text-xs font-semibold">Home</span>
+      </button>
+      <button class="flex flex-col items-center text-gray-400 hover:text-pink-400 transition">
+        <svg class="w-7 h-7 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path></svg>
+        <span class="text-xs font-semibold">Likes</span>
+      </button>
+      <button="flex flex-col items-center text-gray-400 hover:text-pink-400 transition">
+        <svg class="w-7 h-7 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8a2 2 0 012-2h2"></path></svg>
+        <span class="text-xs font-semibold">Chat</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hidden Menu Drawer -->
+  <div id="menu" class="hidden fixed inset-0 bg-black bg-opacity-30 z-40 flex">
+    <div class="bg-white w-72 h-full shadow-2xl p-8 flex flex-col">
+      <button onclick="hideMenu()" class="self-end mb-4 rounded-full hover:bg-pink-50 p-2">
+        <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+      <a href="#" class="py-3 text-lg text-pink-500 font-bold hover:bg-pink-50 rounded-xl">Settings</a>
+      <a href="#" class="py-3 text-gray-700 hover:bg-pink-50 rounded-xl">Subscription</a>
+      <a href="#" class="py-3 text-gray-700 hover:bg-pink-50 rounded-xl">T&amp;C</a>
+      <a href="#" class="py-3 text-gray-700 hover:bg-pink-50 rounded-xl">Logout</a>
+    </div>
+  </div>
+
+  <script>
+    function showLogin() {
+      document.getElementById('opening').classList.add('hidden');
+      document.getElementById('session-check').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('session-check').classList.add('hidden');
+        document.getElementById('onboarding-1').classList.remove('hidden');
+      }, 1100);
+    }
+    function showMenu() {
+      document.getElementById('menu').classList.remove('hidden');
+    }
+    function hideMenu() {
+      document.getElementById('menu').classList.add('hidden');
+    }
+    function showProfile() {
+      hideMenu();
+    }
+    function hideAllOnboarding() {
+      for (let i = 1; i <= 13; i++) {
+        let el = document.getElementById('onboarding-' + i);
+        if (el) el.classList.add('hidden');
+      }
+      let otp = document.getElementById('otp-validate');
+      if(otp) otp.classList.add('hidden');
+      let match = document.getElementById('matching-panel');
+      if(match) match.classList.add('hidden');
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById('btn-onboarding-1').onclick = function() {
+        hideAllOnboarding();
+        document.getElementById('onboarding-2').classList.remove('hidden');
+      };
+      document.getElementById('btn-onboarding-2').onclick = function() {
+        hideAllOnboarding();
+        document.getElementById('onboarding-12').classList.remove('hidden');
+      };
+      document.getElementById('btn-onboarding-12').onclick = function() {
+        hideAllOnboarding();
+        document.getElementById('onboarding-13').classList.remove('hidden');
+      };
+      document.getElementById('btn-onboarding-13').onclick = function() {
+        hideAllOnboarding();
+        document.getElementById('otp-validate').classList.remove('hidden');
+      };
+      document.getElementById('btn-otp-validate').onclick = function() {
+        hideAllOnboarding();
+        document.getElementById('matching-panel').classList.remove('hidden');
+      };
+    });
+
+    let timer = 60;
+    const timerEl = document.getElementById('resend-timer');
+    const resendBtn = document.getElementById('resend-btn');
+    if(timerEl && resendBtn) {
+      setInterval(() => {
+        if(timer > 0) {
+          timer--;
+          timerEl.textContent = `Resend OTP in ${timer}s`;
+          resendBtn.classList.add('hidden');
+        } else {
+          timerEl.textContent = "";
+          resendBtn.classList.remove('hidden');
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
